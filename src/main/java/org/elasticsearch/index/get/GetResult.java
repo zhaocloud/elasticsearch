@@ -222,11 +222,15 @@ public class GetResult implements Streamable, Iterable<GetField>, ToXContent {
                 if (field.isMetadataField()) {
                     builder.field(fieldName, field.getValue());
                 } else {
-                    builder.startArray(field.getName());
-                    for (Object value : field.getValues()) {
-                        builder.value(value);
+                    if (field.getValues().size() > 1) {
+                        builder.startArray(field.getName());
+                        for (Object value : field.getValues()) {
+                            builder.value(value);
+                        }
+                        builder.endArray();
+                    } else {
+                        builder.field(fieldName, field.getValue());
                     }
-                    builder.endArray();
                 }
             }
             builder.endObject();

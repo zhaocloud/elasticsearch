@@ -422,11 +422,15 @@ public class InternalSearchHit implements SearchHit {
                 if (field.isMetadataField()) {
                     builder.field(fieldName, field.value());
                 } else {
-                    builder.startArray(fieldName);
-                    for (Object value : field.getValues()) {
-                        builder.value(value);
+                    if(field.getValues().size() > 1) {
+                        builder.startArray(field.getName());
+                        for (Object value : field.getValues()) {
+                            builder.value(value);
+                        }
+                        builder.endArray();
+                    } else {
+                        builder.field(fieldName, field.getValue());
                     }
-                    builder.endArray();
                 }
             }
             builder.endObject();
