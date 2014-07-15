@@ -442,11 +442,20 @@ public class InternalSearchHit implements SearchHit {
                 if (field.fragments() == null) {
                     builder.nullValue();
                 } else {
-                    builder.startArray();
+                    /*builder.startArray();
                     for (Text fragment : field.fragments()) {
                         builder.value(fragment);
                     }
-                    builder.endArray();
+                    builder.endArray();*/
+                    if(field.fragments().length > 1) {
+                        builder.startArray();
+                        for (Text fragment : field.fragments()) {
+                            builder.value(fragment);
+                        }
+                        builder.endArray();
+                    } else {
+                        builder.value(field.fragments()[0]);
+                    }
                 }
             }
             builder.endObject();
