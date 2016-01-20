@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+:backslash: \
+
+>>>>>>> v2.1.1
 [[setup-service-win]]
 == Running as a Service on Windows
 
@@ -6,9 +11,15 @@ at startup without any user interaction.
 This can be achieved through `service.bat` script under `bin/` folder which allows one to install,
 remove, manage or configure the service and potentially start and stop the service, all from the command-line.
 
+<<<<<<< HEAD
 [source,sh]
 --------------------------------------------------
 c:\elasticsearch-0.90.5\bin>service
+=======
+["source","sh",subs="attributes,callouts"]
+--------------------------------------------------
+c:\elasticsearch-{version}{backslash}bin>service
+>>>>>>> v2.1.1
 
 Usage: service.bat install|remove|start|stop|manager [SERVICE_ID]
 --------------------------------------------------
@@ -36,11 +47,19 @@ the service is reinstalled.
 Based on the architecture of the available JDK/JRE (set through `JAVA_HOME`), the appropriate 64-bit(x64) or 32-bit(x86)
 service will be installed. This information is made available during install:
 
+<<<<<<< HEAD
 [source,sh]
 --------------------------------------------------
 c:\elasticsearch-0.90.5\bin>service install
 Installing service      :  "elasticsearch-service-x64"
 Using JAVA_HOME (64-bit):  "c:\jvm\jdk1.7"
+=======
+["source","sh",subs="attributes,callouts"]
+--------------------------------------------------
+c:\elasticsearch-{version}\bin>service install
+Installing service      :  "elasticsearch-service-x64"
+Using JAVA_HOME (64-bit):  "c:\jvm\jdk1.8"
+>>>>>>> v2.1.1
 The service 'elasticsearch-service-x64' has been installed.
 --------------------------------------------------
 

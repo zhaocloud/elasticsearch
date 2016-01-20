@@ -1,6 +1,11 @@
 [[count]]
 == Count API
 
+<<<<<<< HEAD
+=======
+deprecated[2.1.0, Use the `search` api instead and set `size` to `0`]
+
+>>>>>>> v2.1.1
 The count API allows one to easily execute a query and get the number of
 matches for that query. It can be executed across one or more indices
 and across one or more types. The query can be provided using the
@@ -8,8 +13,12 @@ and across one or more types. The query can be provided using the
 
 [source,java]
 --------------------------------------------------
+<<<<<<< HEAD
 import static org.elasticsearch.index.query.xcontent.FilterBuilders.*;
 import static org.elasticsearch.index.query.xcontent.QueryBuilders.*;
+=======
+import static org.elasticsearch.index.query.QueryBuilders.*;
+>>>>>>> v2.1.1
 
 CountResponse response = client.prepareCount("test")
         .setQuery(termQuery("_type", "type1"))

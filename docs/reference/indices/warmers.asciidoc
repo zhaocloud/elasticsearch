@@ -1,10 +1,18 @@
 [[indices-warmers]]
 == Warmers
 
+<<<<<<< HEAD
 Index warming allows to run registered search requests to warm up the
 index before it is available for search. With the near real time aspect
 of search, cold data (segments) will be warmed up before they become
 available for search. 
+=======
+Index warming allows to run registered search requests to warm up the index
+before it is available for search. With the near real time aspect of search,
+cold data (segments) will be warmed up before they become available for search.
+This includes things such as the filter cache, filesystem cache, and loading
+field data for fields.
+>>>>>>> v2.1.1
 
 Warmup searches typically include requests that require heavy loading of
 data, such as aggregations or sorting on specific fields. The warmup APIs
@@ -65,6 +73,13 @@ curl -XPUT localhost:9200/_template/template_1 -d '
 }'
 --------------------------------------------------
 
+<<<<<<< HEAD
+=======
+On the same level as `types` and `source`, the `request_cache` flag is supported
+to enable request caching for the warmed search request. If not specified, it will
+use the index level configuration of query caching.
+
+>>>>>>> v2.1.1
 [float]
 [[warmer-adding]]
 === Put Warmer
@@ -135,6 +150,12 @@ where
 
 Instead of `_warmer` you can also use the plural `_warmers`.
 
+<<<<<<< HEAD
+=======
+The `request_cache` parameter can be used to enable request caching for
+the search request. If not specified, it will use the index level configuration
+of query caching.
+>>>>>>> v2.1.1
 
 
 [float]
@@ -168,7 +189,13 @@ Instead of `_warmer` you can also use the plural `_warmers`.
 
 Getting a warmer for specific index (or alias, or several indices) based
 on its name. The provided name can be a simple wildcard expression or
+<<<<<<< HEAD
 omitted to get all warmers. Some examples:
+=======
+omitted to get all warmers. 
+
+Some examples:
+>>>>>>> v2.1.1
 
 [source,js]
 --------------------------------------------------
@@ -181,3 +208,7 @@ curl -XGET localhost:9200/test/_warmer/warm*
 # get all warmers for test index
 curl -XGET localhost:9200/test/_warmer/
 --------------------------------------------------
+<<<<<<< HEAD
+=======
+
+>>>>>>> v2.1.1

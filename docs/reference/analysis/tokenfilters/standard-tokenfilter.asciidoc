@@ -5,3 +5,14 @@ A token filter of type `standard` that normalizes tokens extracted with
 the
 <<analysis-standard-tokenizer,Standard
 Tokenizer>>.
+<<<<<<< HEAD
+=======
+
+[TIP]
+==================================================
+
+The `standard` token filter currently does nothing.  It remains as a placeholder
+in case some filtering function needs to be added in a future version.
+
+==================================================
+>>>>>>> v2.1.1

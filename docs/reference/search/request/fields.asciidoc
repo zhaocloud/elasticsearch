@@ -1,6 +1,14 @@
 [[search-request-fields]]
 === Fields
 
+<<<<<<< HEAD
+=======
+WARNING: The `fields` parameter is about fields that are explicitly marked as
+stored in the mapping, which is off by default and generally not recommended.
+Use <<search-request-source-filtering,source filtering>> instead to select
+subsets of the original source document to be returned.
+
+>>>>>>> v2.1.1
 Allows to selectively load specific stored fields for each document represented
 by a search hit.
 
@@ -44,6 +52,7 @@ Script fields can also be automatically detected and used as fields, so
 things like `_source.obj1.field1` can be used, though not recommended, as
 `obj1.field1` will work as well.
 
+<<<<<<< HEAD
 [[partial]]
 ==== Partial
 
@@ -101,3 +110,5 @@ Both `include` and `exclude` support multiple patterns:
     }
 }
 --------------------------------------------------
+=======
+>>>>>>> v2.1.1

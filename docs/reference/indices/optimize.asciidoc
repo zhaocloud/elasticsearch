@@ -1,12 +1,24 @@
 [[indices-optimize]]
 == Optimize
 
+<<<<<<< HEAD
+=======
+deprecated[2.1.0,Optimize API has been renamed to the force merge API]
+
+>>>>>>> v2.1.1
 The optimize API allows to optimize one or more indices through an API.
 The optimize process basically optimizes the index for faster search
 operations (and relates to the number of segments a Lucene index holds
 within each shard). The optimize operation allows to reduce the number
 of segments by merging them.
 
+<<<<<<< HEAD
+=======
+This call will block until the optimize is complete. If the http connection
+is lost, the request will continue in the background, and
+any new requests will block until the previous optimize is complete.
+
+>>>>>>> v2.1.1
 [source,js]
 --------------------------------------------------
 $ curl -XPOST 'http://localhost:9200/twitter/_optimize'
@@ -16,7 +28,11 @@ $ curl -XPOST 'http://localhost:9200/twitter/_optimize'
 [[optimize-parameters]]
 === Request Parameters
 
+<<<<<<< HEAD
 The optimize API accepts the following request parameters:
+=======
+The optimize API accepts the following request parameters as query arguments:
+>>>>>>> v2.1.1
 
 [horizontal]
 `max_num_segments`:: The number of segments to optimize to. To fully
@@ -33,6 +49,7 @@ deletes. Defaults to `false`.  Note that this won't override the
 `flush`::  Should a flush be performed after the optimize. Defaults to
 `true`.
 
+<<<<<<< HEAD
 `wait_for_merge`:: Should the request wait for the merge to end. Defaults
 to `true`. Note, a merge can potentially be a very heavy operation, so
 it might make sense to run it set to `false`.
@@ -40,6 +57,8 @@ it might make sense to run it set to `false`.
 `force`:: Force a merge operation, even if there is a single segment in the
 shard with no deletions. added[1.1.0]
 
+=======
+>>>>>>> v2.1.1
 [float]
 [[optimize-multi-index]]
 === Multi Index
@@ -51,5 +70,9 @@ call, or even on `_all` the indices.
 --------------------------------------------------
 $ curl -XPOST 'http://localhost:9200/kimchy,elasticsearch/_optimize'
 
+<<<<<<< HEAD
 $ curl -XPOST 'http://localhost:9200/_optimize'
+=======
+$ curl -XPOST 'http://localhost:9200/_optimize?only_expunge_deletes=true'
+>>>>>>> v2.1.1
 --------------------------------------------------

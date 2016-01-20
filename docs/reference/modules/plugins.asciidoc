@@ -9,6 +9,7 @@ custom manner. They range from adding custom mapping types, custom
 analyzers (in a more built in fashion), native scripts, custom discovery
 and more.
 
+<<<<<<< HEAD
 [float]
 [[installing]]
 ==== Installing plugins
@@ -299,3 +300,6 @@ You can disable that check using `plugins.check_lucene: false`.
 * https://github.com/wikimedia/search-highlighter[Elasticsearch Experimental Highlighter] (by Wikimedia Foundation/Nik Everett)
 * https://github.com/salyh/elasticsearch-security-plugin[Elasticsearch Security Plugin] (by Hendrik Saly)
 
+=======
+See the {plugins}/index.html[Plugins documentation] for more.
+>>>>>>> v2.1.1

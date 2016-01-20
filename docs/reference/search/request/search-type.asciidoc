@@ -21,6 +21,7 @@ it does not take into account term frequencies and other search engine
 information from the other shards. If we want to support accurate
 ranking, we would need to first gather the term frequencies from all
 shards to calculate global term frequencies, then execute the query on
+<<<<<<< HEAD
 each shard using these globale frequencies.
 
 Also, because of the need to sort the results, getting back a large
@@ -28,12 +29,22 @@ document set, or even scrolling it, while maintaing the correct sorting
 behavior can be a very expensive operation. For large result set
 scrolling without sorting, the `scan` search type (explained below) is
 also available.
+=======
+each shard using these global frequencies.
+
+Also, because of the need to sort the results, getting back a large
+document set, or even scrolling it, while maintaining the correct sorting
+behavior can be a very expensive operation. For large result set
+scrolling, it is best to sort by `_doc` if the order in which documents
+are returned is not important.
+>>>>>>> v2.1.1
 
 Elasticsearch is very flexible and allows to control the type of search
 to execute on a *per search request* basis. The type can be configured
 by setting the *search_type* parameter in the query string. The types
 are:
 
+<<<<<<< HEAD
 [[query-and-fetch]]
 ==== Query And Fetch
 
@@ -45,11 +56,14 @@ shard returns `size` results. Since each shard already returns `size`
 hits, this type actually returns `size` times `number of shards` results
 back to the caller.
 
+=======
+>>>>>>> v2.1.1
 [[query-then-fetch]]
 ==== Query Then Fetch
 
 Parameter value: *query_then_fetch*.
 
+<<<<<<< HEAD
 The query is executed against all shards, but only enough information is
 returned (*not the document content*). The results are then sorted and
 ranked, and based on it, *only the relevant shards* are asked for the
@@ -57,10 +71,23 @@ actual document content. The return number of hits is exactly as
 specified in `size`, since they are the only ones that are fetched. This
 is very handy when the index has a lot of shards (not replicas, shard id
 groups).
+=======
+The request is processed in two phases. In the first phase, the query
+is forwarded to *all involved shards*. Each shard executes the search
+and generates a sorted list of results, local to that shard. Each
+shard returns *just enough information* to the coordinating node
+to allow it merge and re-sort the shard level results into a globally
+sorted set of results, of maximum length `size`. 
+
+During the second phase, the coordinating node requests the document
+content (and highlighted snippets, if any) from *only the relevant
+shards*.
+>>>>>>> v2.1.1
 
 NOTE: This is the default setting, if you do not specify a `search_type`
       in your request.
 
+<<<<<<< HEAD
 [[dfs-query-and-fetch]]
 ==== Dfs, Query And Fetch
 
@@ -70,6 +97,8 @@ Same as "Query And Fetch", except for an initial scatter phase which
 goes and computes the distributed term frequencies for more accurate
 scoring.
 
+=======
+>>>>>>> v2.1.1
 [[dfs-query-then-fetch]]
 ==== Dfs, Query Then Fetch
 
@@ -82,16 +111,26 @@ scoring.
 [[count]]
 ==== Count
 
+<<<<<<< HEAD
+=======
+deprecated[2.0.0-beta1, `count` does not provide any benefits over `query_then_fetch` with a `size` of `0`]
+
+>>>>>>> v2.1.1
 Parameter value: *count*.
 
 A special search type that returns the count that matched the search
 request without any docs (represented in `total_hits`), and possibly,
+<<<<<<< HEAD
 including facets as well. In general, this is preferable to the `count`
+=======
+including aggregations as well. In general, this is preferable to the `count`
+>>>>>>> v2.1.1
 API as it provides more options.
 
 [[scan]]
 ==== Scan
 
+<<<<<<< HEAD
 Parameter value: *scan*.
 
 The `scan` search type allows to efficiently scroll a large result set.
@@ -154,3 +193,13 @@ If all scroll ids need to be cleared the reserved `_all` value can used instead 
 --------------------------------------------------
 curl -XDELETE 'localhost:9200/_search/scroll/_all'
 --------------------------------------------------
+=======
+deprecated[2.1.0, `scan` does not provide any benefits over a regular `scroll` request sorted by `_doc`]
+
+Parameter value: *scan*.
+
+The `scan` search type disables sorting in order to allow very efficient
+scrolling through large result sets.
+
+
+>>>>>>> v2.1.1

@@ -20,13 +20,21 @@ mvn clean package -DskipTests
 
 To disable and enable network transport, set the `Des.node.mode`.
 
+<<<<<<< HEAD
 Use network transport (default):
+=======
+Use network transport:
+>>>>>>> v2.1.1
 
 ------------------------------------
 -Des.node.mode=network
 ------------------------------------
 
+<<<<<<< HEAD
 Use local transport:
+=======
+Use local transport (default since 1.3):
+>>>>>>> v2.1.1
 
 -------------------------------------
 -Des.node.mode=local
@@ -38,6 +46,18 @@ Alternatively, you can set the `ES_TEST_LOCAL` environment variable:
 export ES_TEST_LOCAL=true && mvn test
 -------------------------------------
 
+<<<<<<< HEAD
+=======
+=== Running Elasticsearch from a checkout
+
+In order to run Elasticsearch from source without building a package, you can
+run it using Maven:
+
+-------------------------------------
+./run.sh
+-------------------------------------
+
+>>>>>>> v2.1.1
 === Test case filtering.
 
 - `tests.class` is a class-filtering shell-like glob pattern,
@@ -62,6 +82,29 @@ Run any test methods that contain 'esi' (like: ...r*esi*ze...).
 mvn test "-Dtests.method=*esi*"
 -------------------------------
 
+<<<<<<< HEAD
+=======
+You can also filter tests by certain annotations ie:
+
+  * `@Nightly` - tests that only run in nightly builds (disabled by default)
+  * `@AwaitsFix` - tests that are waiting for a bugfix (disabled by default)
+  * `@BadApple` - tests that are known to fail randomly (disabled by default)
+
+Those annotation names can be combined into a filter expression like:
+
+------------------------------------------------
+mvn test -Dtests.filter="@nightly and not @badapple"
+------------------------------------------------
+
+to run all nightly test but not the ones that are badapple tests. `tests.filter` supports
+the boolean operators `and, or, not` and grouping ie:
+
+
+---------------------------------------------------------------
+mvn test -Dtests.filter="@nightly and not(@badapple or @awaitsfix)"
+---------------------------------------------------------------
+
+>>>>>>> v2.1.1
 === Seed and repetitions.
 
 Run with a given seed (seed is a hex-encoded long).
@@ -72,7 +115,11 @@ mvn test -Dtests.seed=DEADBEEF
 
 === Repeats _all_ tests of ClassName N times.
 
+<<<<<<< HEAD
 Every test repetition will have a different method seed 
+=======
+Every test repetition will have a different method seed
+>>>>>>> v2.1.1
 (derived from a single random master seed).
 
 --------------------------------------------------
@@ -115,12 +162,19 @@ Default value provided below in [brackets].
 mvn test -Dtests.nightly=[false]   - nightly test group (@Nightly)
 mvn test -Dtests.weekly=[false]    - weekly tests (@Weekly)
 mvn test -Dtests.awaitsfix=[false] - known issue (@AwaitsFix)
+<<<<<<< HEAD
 mvn test -Dtests.slow=[true]       - slow tests (@Slow)
+=======
+>>>>>>> v2.1.1
 ------------------------------------------------------------------
 
 === Load balancing and caches.
 
+<<<<<<< HEAD
 By default, the tests run sequentially on a single forked JVM. 
+=======
+By default, the tests run sequentially on a single forked JVM.
+>>>>>>> v2.1.1
 
 To run with more forked JVMs than the default use:
 
@@ -129,7 +183,11 @@ mvn test -Dtests.jvms=8 test
 ----------------------------
 
 Don't count hypercores for CPU-intense tests and leave some slack
+<<<<<<< HEAD
 for JVM-internal threads (like the garbage collector). Make sure there is 
+=======
+for JVM-internal threads (like the garbage collector). Make sure there is
+>>>>>>> v2.1.1
 enough RAM to handle child JVMs.
 
 === Test compatibility.
@@ -176,6 +234,7 @@ even if tests are passing.
 mvn test -Dtests.output=always
 ------------------------------
 
+<<<<<<< HEAD
 == Backwards Compatibility Tests
 
 Running backwards compatibility tests is disabled by default since it
@@ -192,6 +251,33 @@ can be omitted:
  
 ---------------------------------------------------------------------------
 mvn test -Dtests.bwc=true -Dtests.bwc.version=x.y.z 
+=======
+Configure the heap size.
+
+------------------------------
+mvn test -Dtests.heap.size=512m
+------------------------------
+
+Pass arbitrary jvm arguments.
+
+------------------------------
+mvn test -Dtests.jvm.argline="-XX:HeapDumpPath=/path/to/heapdumps"
+------------------------------
+
+== Running integration tests
+
+To run the integration tests:
+
+---------------------------------------------------------------------------
+mvn verify
+---------------------------------------------------------------------------
+
+Note that this will also run the unit tests first. If you want to just
+run the integration tests only (because you are debugging them):
+
+---------------------------------------------------------------------------
+mvn verify -Dskip.unit.tests
+>>>>>>> v2.1.1
 ---------------------------------------------------------------------------
 
 == Testing the REST layer
@@ -207,10 +293,17 @@ The REST tests are run automatically when executing the maven test command. To r
 REST tests use the following command:
 
 ---------------------------------------------------------------------------
+<<<<<<< HEAD
 mvn test -Dtests.class=org.elasticsearch.test.rest.ElasticsearchRestTests
 ---------------------------------------------------------------------------
 
 `ElasticsearchRestTests` is the executable test class that runs all the
+=======
+mvn verify -Dtests.filter="@Rest"
+---------------------------------------------------------------------------
+
+`RestNIT` are the executable test classes that runs all the
+>>>>>>> v2.1.1
 yaml suites available within the `rest-api-spec` folder.
 
 The REST tests support all the options provided by the randomized runner, plus the following:
@@ -232,4 +325,287 @@ comma separated list of nodes to connect to (e.g. localhost:9300). A transport c
 be created based on that and used for all the before|after test operations, and to extract
 the http addresses of the nodes so that REST requests can be sent to them.
 
+<<<<<<< HEAD
 
+=======
+== Skip validate
+
+To disable validation step (forbidden API or `// NOCOMMIT`) use
+
+---------------------------------------------------------------------------
+mvn test -Dvalidate.skip=true
+---------------------------------------------------------------------------
+
+You can also skip this by using the "dev" profile:
+
+---------------------------------------------------------------------------
+mvn test -Pdev
+---------------------------------------------------------------------------
+
+== Backwards Compatibility Tests
+
+Backwards compatibility tests now run automatically as part of the qa
+submodule, including resolving their dependencies using maven. You can run just
+those tests like so:
+
+---------------------------------------------------------------------------
+mvn verify -pl qa/backwards
+---------------------------------------------------------------------------
+
+Or run the tests against a specific backwards version like so:
+
+---------------------------------------------------------------------------
+mvn verify -pl qa/backwards/2.0.0
+---------------------------------------------------------------------------
+
+When a new version of Elasticsearch is released all versions of Elasticsearch
+that should be backwards compatible with that version should grow a submodule
+of the same name as the version. This should be as simple as copying the 2.0.0
+submodule and changing 2.0.0 to the newly released version.
+
+== Testing scripts
+
+The simplest way to test scripts and the packaged distributions is to use
+Vagrant. You can get started by following there five easy steps:
+
+. Install Virtual Box and Vagrant.
+
+. (Optional) Install vagrant-cachier to squeeze a bit more performance out of
+the process:
+
+--------------------------------------
+vagrant plugin install vagrant-cachier
+--------------------------------------
+
+. Validate your installed dependencies:
+
+-------------------------------------
+mvn -Dtests.vagrant -pl qa/vagrant validate
+-------------------------------------
+
+. Download the VMs. Since Maven or ant or something eats the progress reports
+from Vagrant when you run it inside mvn its probably best if you run this one
+time to setup all the VMs one at a time. Run this to download and setup the VMs
+we use for testing by default:
+
+--------------------------------------------------------
+vagrant up --provision trusty --provider virtualbox && vagrant halt trusty
+vagrant up --provision centos-7 --provider virtualbox && vagrant halt centos-7
+--------------------------------------------------------
+
+or run this to download and setup all the VMs:
+
+-------------------------------------------------------------------------------
+vagrant halt
+for box in $(vagrant status | grep 'poweroff\|not created' | cut -f1 -d' '); do
+  vagrant up --provision $box --provider virtualbox
+  vagrant halt $box
+done
+-------------------------------------------------------------------------------
+
+. Smoke test the maven/ant dance that we use to get vagrant involved in
+integration testing is working:
+
+---------------------------------------------
+mvn -Dtests.vagrant -Psmoke-vms -pl qa/vagrant verify
+---------------------------------------------
+
+or this to validate all the VMs:
+
+-------------------------------------------------
+mvn -Dtests.vagrant=all -Psmoke-vms -pl qa/vagrant verify
+-------------------------------------------------
+
+That will start up the VMs and then immediate quit.
+
+. Finally run the tests. The fastest way to get this started is to run:
+
+-----------------------------------
+mvn clean install -DskipTests
+mvn -Dtests.vagrant -pl qa/vagrant verify
+-----------------------------------
+
+You could just run:
+
+--------------------
+mvn -Dtests.vagrant verify
+--------------------
+
+but that will run all the tests. Which is probably a good thing, but not always
+what you want.
+
+Whichever snippet you run mvn will build the tar, zip and deb packages. If you
+have rpmbuild installed it'll build the rpm package as well. Then mvn will
+spin up trusty and verify the tar, zip, and deb package. If you have rpmbuild
+installed it'll spin up centos-7 and verify the tar, zip and rpm packages. We
+chose those two distributions as the default because they cover deb and rpm
+packaging and SyvVinit and systemd.
+
+You can control the boxes that are used for testing like so. Run just
+fedora-22 with:
+
+--------------------------------------------
+mvn -Dtests.vagrant -pl qa/vagrant verify -DboxesToTest=fedora-22
+--------------------------------------------
+
+or run jessie and trusty:
+
+------------------------------------------------------------------
+mvn -Dtests.vagrant -pl qa/vagrant verify -DboxesToTest='jessie, trusty'
+------------------------------------------------------------------
+
+or run all the boxes:
+
+---------------------------------------
+mvn -Dtests.vagrant=all -pl qa/vagrant verify
+---------------------------------------
+
+If you want to run a specific test on several boxes you can do:
+
+---------------------------------------
+mvn -Dtests.vagrant=all -pl qa/vagrant verify -DtestScripts=*tar*.bats
+---------------------------------------
+
+Its important to know that if you ctrl-c any of these `mvn` runs that you'll
+probably leave a VM up. You can terminate it by running:
+
+------------
+vagrant halt
+------------
+
+This is just regular vagrant so you can run normal multi box vagrant commands
+to test things manually. Just run:
+
+---------------------------------------
+vagrant up trusty --provider virtualbox && vagrant ssh trusty
+---------------------------------------
+
+to get an Ubuntu or
+
+-------------------------------------------
+vagrant up centos-7 --provider virtualbox && vagrant ssh centos-7
+-------------------------------------------
+
+to get a CentOS. Once you are done with them you should halt them:
+
+-------------------
+vagrant halt trusty
+-------------------
+
+These are the linux flavors the Vagrantfile currently supports:
+
+* precise aka Ubuntu 12.04
+* trusty aka Ubuntu 14.04
+* vivid aka Ubuntun 15.04
+* jessie aka Debian 8, the current debina stable distribution
+* centos-6
+* centos-7
+* fedora-22
+* oel-7 aka Oracle Enterprise Linux 7
+* sles-12
+
+We're missing the following from the support matrix because there aren't high
+quality boxes available in vagrant atlas:
+
+* sles-11
+* opensuse-13
+* oel-6
+
+We're missing the follow because our tests are very linux/bash centric:
+
+* Windows Server 2012
+
+Its important to think of VMs like cattle: if they become lame you just shoot
+them and let vagrant reprovision them. Say you've hosed your precise VM:
+
+----------------------------------------------------
+vagrant ssh precise -c 'sudo rm -rf /bin'; echo oops
+----------------------------------------------------
+
+All you've got to do to get another one is
+
+----------------------------------------------
+vagrant destroy -f trusty && vagrant up trusty --provider virtualbox
+----------------------------------------------
+
+The whole process takes a minute and a half on a modern laptop, two and a half
+without vagrant-cachier.
+
+Its possible that some downloads will fail and it'll be impossible to restart
+them. This is a bug in vagrant. See the instructions here for how to work
+around it:
+https://github.com/mitchellh/vagrant/issues/4479
+
+Some vagrant commands will work on all VMs at once:
+
+------------------
+vagrant halt
+vagrant destroy -f
+------------------
+
+
+----------
+vagrant up
+----------
+
+would normally start all the VMs but we've prevented that because that'd
+consume a ton of ram.
+
+== Testing scripts more directly
+
+In general its best to stick to testing in vagrant because the bats scripts are
+destructive. When working with a single package its generally faster to run its
+tests in a tighter loop than maven provides. In one window:
+
+--------------------------------
+mvn -pl distribution/rpm package
+--------------------------------
+
+and in another window:
+
+----------------------------------------------------
+vagrant up centos-7 --provider virtualbox && vagrant ssh centos-7
+cd $RPM
+sudo bats $BATS/*rpm*.bats
+----------------------------------------------------
+
+If you wanted to retest all the release artifacts on a single VM you could:
+
+-------------------------------------------------
+# Build all the distributions fresh but skip recompiling elasticsearch:
+mvn -amd -pl distribution install -DskipTests
+# Copy them all the testroot
+mvn -Dtests.vagrant -pl qa/vagrant pre-integration-test
+vagrant up trusty --provider virtualbox && vagrant ssh trusty
+cd $TESTROOT
+sudo bats $BATS/*.bats
+-------------------------------------------------
+
+== Coverage analysis
+
+Tests can be run instrumented with jacoco to produce a coverage report in
+`target/site/jacoco/`.
+
+Unit test coverage:
+
+---------------------------------------------------------------------------
+mvn -Dtests.coverage test jacoco:report
+---------------------------------------------------------------------------
+
+Integration test coverage:
+
+---------------------------------------------------------------------------
+mvn -Dtests.coverage -Dskip.unit.tests verify jacoco:report
+---------------------------------------------------------------------------
+
+Combined (Unit+Integration) coverage:
+
+---------------------------------------------------------------------------
+mvn -Dtests.coverage verify jacoco:report
+---------------------------------------------------------------------------
+
+== Debugging from an IDE
+
+If you want to run elasticsearch from your IDE, you should execute ./run.sh
+It opens a remote debugging port that you can connect with your IDE.
+>>>>>>> v2.1.1

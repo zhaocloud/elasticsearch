@@ -10,8 +10,13 @@ survive a full cluster restart). Here is an example:
 curl -XPUT localhost:9200/_cluster/settings -d '{
     "persistent" : {
         "discovery.zen.minimum_master_nodes" : 2
+<<<<<<< HEAD
     } 
 }' 
+=======
+    }
+}'
+>>>>>>> v2.1.1
 --------------------------------------------------
 
 Or:
@@ -21,8 +26,13 @@ Or:
 curl -XPUT localhost:9200/_cluster/settings -d '{
     "transient" : {
         "discovery.zen.minimum_master_nodes" : 2
+<<<<<<< HEAD
     } 
 }' 
+=======
+    }
+}'
+>>>>>>> v2.1.1
 --------------------------------------------------
 
 The cluster responds with the settings updated. So the response for the
@@ -34,8 +44,13 @@ last example will be:
     "persistent" : {},
     "transient" : {
         "discovery.zen.minimum_master_nodes" : "2"
+<<<<<<< HEAD
     } 
 }' 
+=======
+    }
+}'
+>>>>>>> v2.1.1
 --------------------------------------------------
 
 Cluster wide settings can be returned using:
@@ -45,6 +60,7 @@ Cluster wide settings can be returned using:
 curl -XGET localhost:9200/_cluster/settings
 --------------------------------------------------
 
+<<<<<<< HEAD
 There is a specific list of settings that can be updated, those include:
 
 [float]
@@ -220,3 +236,9 @@ All the disable allocation settings have been deprecated in favour for
 
 Logger values can also be updated by setting `logger.` prefix. More
 settings will be allowed to be updated.
+=======
+
+A list of dynamically updatable settings can be found in the
+<<modules,Modules>> documentation.
+
+>>>>>>> v2.1.1

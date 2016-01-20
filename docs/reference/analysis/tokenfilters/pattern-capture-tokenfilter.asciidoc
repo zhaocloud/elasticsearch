@@ -82,7 +82,11 @@ curl -XPUT localhost:9200/test/  -d '
                "type" : "pattern_capture",
                "preserve_original" : 1,
                "patterns" : [
+<<<<<<< HEAD
                   "(\\w+)",
+=======
+                  "([^@]+)",
+>>>>>>> v2.1.1
                   "(\\p{L}+)",
                   "(\\d+)",
                   "@(.+)"
@@ -108,9 +112,16 @@ When the above analyzer is used on an email address like:
 john-smith_123@foo-bar.com
 --------------------------------------------------
 
+<<<<<<< HEAD
 it would produce the following tokens: [ `john-smith_123`,
 `foo-bar.com`, `john`, `smith_123`, `smith`, `123`, `foo`,
 `foo-bar.com`, `bar`, `com` ]
+=======
+it would produce the following tokens:
+
+    john-smith_123@foo-bar.com, john-smith_123,
+    john, smith, 123, foo-bar.com, foo, bar, com
+>>>>>>> v2.1.1
 
 Multiple patterns are required to allow overlapping captures, but also
 means that patterns are less dense and easier to understand.

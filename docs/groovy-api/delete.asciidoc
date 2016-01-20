@@ -2,7 +2,12 @@
 == Delete API
 
 The delete API is very similar to the
+<<<<<<< HEAD
 {java}/delete.html[Java delete API], here is an
+=======
+// {java}/java-docs-delete.html[]
+Java delete API, here is an
+>>>>>>> v2.1.1
 example:
 
 [source,js]

@@ -1,6 +1,7 @@
 [[index-modules-allocation]]
 == Index Shard Allocation
 
+<<<<<<< HEAD
 [float]
 [[shard-allocation-filtering]]
 === Shard Allocation Filtering
@@ -137,3 +138,22 @@ Both watermark settings can be changed dynamically using the cluster
 settings API. By default, Elasticsearch will retrieve information
 about the disk usage of the nodes every 30 seconds. This can also be
 changed by setting the `cluster.info.update.interval` setting.
+=======
+This module provides per-index settings to control the allocation of shards to
+nodes:
+
+* <<shard-allocation-filtering,Shard allocation filtering>>: Controlling which shards are allocated to which nodes.
+* <<delayed-allocation,Delayed allocation>>: Delaying allocation of unassigned shards caused by a node leaving.
+* <<allocation-total-shards,Total shards per node>>: A hard limit on the number of shards from the same index per node.
+
+include::allocation/filtering.asciidoc[]
+
+include::allocation/delayed.asciidoc[]
+
+include::allocation/prioritization.asciidoc[]
+
+include::allocation/total_shards.asciidoc[]
+
+
+
+>>>>>>> v2.1.1

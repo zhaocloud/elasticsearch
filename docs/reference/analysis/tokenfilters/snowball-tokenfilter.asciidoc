@@ -5,8 +5,13 @@ A filter that stems words using a Snowball-generated stemmer. The
 `language` parameter controls the stemmer with the following available
 values: `Armenian`, `Basque`, `Catalan`, `Danish`, `Dutch`, `English`,
 `Finnish`, `French`, `German`, `German2`, `Hungarian`, `Italian`, `Kp`,
+<<<<<<< HEAD
 `Lovins`, `Norwegian`, `Porter`, `Portuguese`, `Romanian`, `Russian`,
 `Spanish`, `Swedish`, `Turkish`.
+=======
+`Lithuanian`, `Lovins`, `Norwegian`, `Porter`, `Portuguese`, `Romanian`,
+`Russian`, `Spanish`, `Swedish`, `Turkish`.
+>>>>>>> v2.1.1
 
 For example:
 

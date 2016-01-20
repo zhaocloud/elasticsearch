@@ -28,6 +28,7 @@ curl -XGET 'http://localhost:9200/2013-*/_settings'
 --------------------------------------------------
 
 [float]
+<<<<<<< HEAD
 === Prefix option
 
 There is also support for a `prefix` query string option
@@ -48,3 +49,14 @@ The first example returns all index settings the start with `index.` in the inde
 the second example gets all index settings that start with `index.routing.allocation.` for
 all indices, lastly the third example returns all index settings that start with `index.merge.`
 in indices that start with `2013-`.
+=======
+=== Filtering settings by name
+
+The settings that are returned can be filtered with wildcard matching
+as follows:
+
+[source,js]
+--------------------------------------------------
+curl -XGET 'http://localhost:9200/2013-*/_settings/name=index.number_*'
+--------------------------------------------------
+>>>>>>> v2.1.1

@@ -1,6 +1,7 @@
 .idea/
 .gradle/
 *.iml
+<<<<<<< HEAD
 work/
 /data/
 /plugins/
@@ -30,10 +31,43 @@ eclipse-build
 !/.settings/org.eclipse.core.resources.prefs
 !/.settings/org.eclipse.jdt.core.prefs
 !/.settings/org.eclipse.jdt.ui.prefs
+=======
+*.ipr
+*.iws
+work/
+/data/
+logs/
+.DS_Store
+build/
+generated-resources/
+**/.local*
+docs/html/
+docs/build.log
+/tmp/
+html_docs
+.vagrant/
+
+## eclipse ignores (use 'mvn eclipse:eclipse' to build eclipse projects)
+## All files (.project, .classpath, .settings/*) should be generated through Maven which
+## will correctly set the classpath based on the declared dependencies and write settings
+## files to ensure common coding style across Eclipse and IDEA.
+.project
+.classpath
+eclipse-build
+.settings
+>>>>>>> v2.1.1
 
 ## netbeans ignores
 nb-configuration.xml
 nbactions.xml
 
+<<<<<<< HEAD
 /dependency-reduced-pom.xml
 *.prefs
+=======
+dependency-reduced-pom.xml
+
+# old patterns specific to maven
+*-execution-hints.log
+target/
+>>>>>>> v2.1.1

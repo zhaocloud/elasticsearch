@@ -12,7 +12,12 @@ of the request includes the updated settings, for example:
 {
     "index" : {
         "number_of_replicas" : 4
+<<<<<<< HEAD
     } }
+=======
+    }
+}
+>>>>>>> v2.1.1
 --------------------------------------------------
 
 The above will change the number of replicas to 4 from the current
@@ -24,6 +29,7 @@ curl -XPUT 'localhost:9200/my_index/_settings' -d '
 {
     "index" : {
         "number_of_replicas" : 4
+<<<<<<< HEAD
     } }
 '
 --------------------------------------------------
@@ -158,6 +164,14 @@ added[1.0.0.RC1]
 
 `index.warmer.enabled`::
     See <<indices-warmers>>. Defaults to `true`.
+=======
+    }
+}'
+--------------------------------------------------
+
+The list of per-index settings which can be updated dynamically on live
+indices can be found in <<index-modules>>.
+>>>>>>> v2.1.1
 
 [float]
 [[bulk]]
@@ -190,11 +204,19 @@ curl -XPUT localhost:9200/test/_settings -d '{
     } }'
 --------------------------------------------------
 
+<<<<<<< HEAD
 And, an optimize should be called:
 
 [source,js]
 --------------------------------------------------
 curl -XPOST 'http://localhost:9200/test/_optimize?max_num_segments=5'
+=======
+And, a force merge should be called:
+
+[source,js]
+--------------------------------------------------
+curl -XPOST 'http://localhost:9200/test/_forcemerge?max_num_segments=5'
+>>>>>>> v2.1.1
 --------------------------------------------------
 
 [float]

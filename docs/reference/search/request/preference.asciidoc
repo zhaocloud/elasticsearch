@@ -5,7 +5,11 @@ Controls a `preference` of which shard replicas to execute the search
 request on. By default, the operation is randomized between the shard
 replicas.
 
+<<<<<<< HEAD
 The `preference` can be set to:
+=======
+The `preference` is a query string parameter which can be set to:
+>>>>>>> v2.1.1
 
 [horizontal]
 `_primary`:: 
@@ -16,6 +20,16 @@ The `preference` can be set to:
 	The operation will go and be executed on the primary
 	shard, and if not available (failover), will execute on other shards.
 
+<<<<<<< HEAD
+=======
+`_replica`::
+  The operation will go and be executed only on a replica shard.
+
+`_replica_first`::
+  The operation will go and be executed only on a replica shard, and if
+  not available (failover), will execute on other shards.
+
+>>>>>>> v2.1.1
 `_local`:: 
 	The operation will prefer to be executed on a local
 	allocated shard if possible.
@@ -33,6 +47,13 @@ The `preference` can be set to:
 	and `3` in this case). This preference can be combined with other
 	preferences but it has to appear first: `_shards:2,3;_primary`
 
+<<<<<<< HEAD
+=======
+`_only_nodes`::
+    Restricts the operation to nodes specified in node specification
+    https://www.elastic.co/guide/en/elasticsearch/reference/current/cluster.html
+
+>>>>>>> v2.1.1
 Custom (string) value:: 
 	A custom value will be used to guarantee that
 	the same shards will be used for the same custom value. This can help
@@ -40,3 +61,23 @@ Custom (string) value::
 	states. A sample value can be something like the web session id, or the
 	user name.
 
+<<<<<<< HEAD
+=======
+For instance, use the user's session ID to ensure consistent ordering of results
+for the user:
+
+[source,js]
+------------------------------------------------
+curl localhost:9200/_search?preference=xyzabc123 -d '
+{
+    "query": {
+        "match": {
+            "title": "elasticsearch"
+        }
+    }
+}
+'
+------------------------------------------------
+
+
+>>>>>>> v2.1.1

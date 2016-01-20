@@ -27,7 +27,11 @@ the available commands.
 Each of the commands accepts a query string parameter `v` to turn on
 verbose output.
 
+<<<<<<< HEAD
 [source,shell]
+=======
+[source,sh]
+>>>>>>> v2.1.1
 --------------------------------------------------
 % curl 'localhost:9200/_cat/master?v'
 id                     ip        node
@@ -41,7 +45,11 @@ EGtKWZlWQYWDmX29fUnp3Q 127.0.0.1 Grey, Sara
 Each of the commands accepts a query string parameter `help` which will
 output its available columns.
 
+<<<<<<< HEAD
 [source,shell]
+=======
+[source,sh]
+>>>>>>> v2.1.1
 --------------------------------------------------
 % curl 'localhost:9200/_cat/master?help'
 id   | node id
@@ -56,7 +64,11 @@ node | node name
 Each of the commands accepts a query string parameter `h` which forces
 only those columns to appear.
 
+<<<<<<< HEAD
 [source,shell]
+=======
+[source,sh]
+>>>>>>> v2.1.1
 --------------------------------------------------
 % curl 'n1:9200/_cat/nodes?h=ip,port,heapPercent,name'
 192.168.56.40 9300 40.3 Captain Universe
@@ -66,6 +78,13 @@ only those columns to appear.
 192.168.56.30 9300 43.9 Ramsey, Doug
 --------------------------------------------------
 
+<<<<<<< HEAD
+=======
+You can also request multiple columns using simple wildcards like
+`/_cat/thread_pool?h=ip,bulk.*` to get all headers (or aliases) starting
+with `bulk.`.
+
+>>>>>>> v2.1.1
 [float]
 [[numeric-formats]]
 === Numeric formats
@@ -83,7 +102,11 @@ off human mode.  We'll use a byte-level resolution.  Then we'll pipe
 our output into `sort` using the appropriate column, which in this
 case is the eight one.
 
+<<<<<<< HEAD
 [source,shell]
+=======
+[source,sh]
+>>>>>>> v2.1.1
 --------------------------------------------------
 % curl '192.168.56.10:9200/_cat/indices?bytes=b' | sort -rnk8
 green wiki2 3 0 10000   0 105274918 105274918
@@ -108,6 +131,11 @@ include::cat/indices.asciidoc[]
 
 include::cat/master.asciidoc[]
 
+<<<<<<< HEAD
+=======
+include::cat/nodeattrs.asciidoc[]
+
+>>>>>>> v2.1.1
 include::cat/nodes.asciidoc[]
 
 include::cat/pending_tasks.asciidoc[]
@@ -116,7 +144,18 @@ include::cat/plugins.asciidoc[]
 
 include::cat/recovery.asciidoc[]
 
+<<<<<<< HEAD
+=======
+include::cat/repositories.asciidoc[]
+
+>>>>>>> v2.1.1
 include::cat/thread_pool.asciidoc[]
 
 include::cat/shards.asciidoc[]
 
+<<<<<<< HEAD
+=======
+include::cat/segments.asciidoc[]
+
+include::cat/snapshots.asciidoc[]
+>>>>>>> v2.1.1

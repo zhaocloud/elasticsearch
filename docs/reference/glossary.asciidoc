@@ -86,9 +86,14 @@
   server for testing purposes, but usually you should have one node per
   server.
   +
+<<<<<<< HEAD
   At startup, a node will use unicast (or multicast, if specified) to
   discover an existing cluster with the same cluster name and will try
   to join that cluster.
+=======
+  At startup, a node will use unicast to discover an existing cluster with
+  the same cluster name and will try to join that cluster.
+>>>>>>> v2.1.1
 
  [[glossary-primary-shard]] primary shard ::
 

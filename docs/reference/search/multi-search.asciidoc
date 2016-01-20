@@ -19,23 +19,38 @@ body\n
 The header part includes which index / indices to search on, optional
 (mapping) types to search on, the `search_type`, `preference`, and
 `routing`. The body includes the typical search body request (including
+<<<<<<< HEAD
 the `query`, `facets`, `from`, `size`, and so on). Here is an example:
+=======
+the `query`, `aggregations`, `from`, `size`, and so on). Here is an example:
+>>>>>>> v2.1.1
 
 [source,js]
 --------------------------------------------------
 $ cat requests
 {"index" : "test"}
 {"query" : {"match_all" : {}}, "from" : 0, "size" : 10}
+<<<<<<< HEAD
 {"index" : "test", "search_type" : "count"}
+=======
+{"index" : "test", "search_type" : "dfs_query_then_fetch"}
+>>>>>>> v2.1.1
 {"query" : {"match_all" : {}}}
 {}
 {"query" : {"match_all" : {}}}
 
 {"query" : {"match_all" : {}}}
+<<<<<<< HEAD
 {"search_type" : "count"}
 {"query" : {"match_all" : {}}}
 
 $ curl -XGET localhost:9200/_msearch --data-binary @requests; echo
+=======
+{"search_type" : "dfs_query_then_fetch"}
+{"query" : {"match_all" : {}}}
+
+$ curl -XGET localhost:9200/_msearch --data-binary "@requests"; echo
+>>>>>>> v2.1.1
 --------------------------------------------------
 
 Note, the above includes an example of an empty header (can also be just

@@ -60,8 +60,11 @@ You can also use wildcards. The field names can be any of the following:
 [horizontal]
 Full names:: the full path, including any parent object name the field is
    part of (ex. `user.id`).
+<<<<<<< HEAD
 Index names:: the name of the lucene field (can be different than the
    field name if the `index_name` option of the mapping is used).
+=======
+>>>>>>> v2.1.1
 Field names:: the name of the field without the path to it (ex. `id` for `{ "user" : { "id" : 1 } }`).
 
 The above options are specified in the order the `field` parameter is resolved.
@@ -76,12 +79,21 @@ For example, consider the following mapping:
      "article": {
          "properties": {
              "id": { "type": "string" },
+<<<<<<< HEAD
              "title":  { "type": "string", "index_name": "text" },
              "abstract": { "type": "string", "index_name": "text" },
              "author": {
                  "properties": {
                      "id": { "type": "string" },
                      "name": { "type": "string", "index_name": "author" }
+=======
+             "title":  { "type": "string"},
+             "abstract": { "type": "string"},
+             "author": {
+                 "properties": {
+                     "id": { "type": "string" },
+                     "name": { "type": "string" }
+>>>>>>> v2.1.1
                  }
              }
          }
@@ -89,13 +101,21 @@ For example, consider the following mapping:
  }
 --------------------------------------------------
 
+<<<<<<< HEAD
 To select the `id` of the `author` field, you can use its full name `author.id`. Using `text` will return
 the mapping of `abstract` as it is one of the fields which map to the Lucene field `text`. `name` will return
+=======
+To select the `id` of the `author` field, you can use its full name `author.id`. `name` will return
+>>>>>>> v2.1.1
 the field `author.name`:
 
 [source,js]
 --------------------------------------------------
+<<<<<<< HEAD
 curl -XGET "http://localhost:9200/publications/_mapping/article/field/author.id,text,name"
+=======
+curl -XGET "http://localhost:9200/publications/_mapping/article/field/author.id,abstract,name"
+>>>>>>> v2.1.1
 --------------------------------------------------
 
 returns:
@@ -105,10 +125,17 @@ returns:
 {
    "publications": {
       "article": {
+<<<<<<< HEAD
          "text": {
             "full_name": "abstract",
             "mapping": {
                "abstract": { "type": "string", "index_name": "text" }
+=======
+         "abstract": {
+            "full_name": "abstract",
+            "mapping": {
+               "abstract": { "type": "string" }
+>>>>>>> v2.1.1
             }
          },
          "author.id": {
@@ -120,7 +147,11 @@ returns:
          "name": {
             "full_name": "author.name",
             "mapping": {
+<<<<<<< HEAD
                "name": { "type": "string", "index_name": "author" }
+=======
+               "name": { "type": "string" }
+>>>>>>> v2.1.1
             }
          }
       }
@@ -130,7 +161,11 @@ returns:
 
 Note how the response always use the same fields specified in the request as keys.
 The `full_name` in every entry contains the full name of the field whose mapping were returned.
+<<<<<<< HEAD
 This is useful when the request can refer to to multiple fields (like `text` above).
+=======
+This is useful when the request can refer to to multiple fields.
+>>>>>>> v2.1.1
 
 [float]
 === Other options

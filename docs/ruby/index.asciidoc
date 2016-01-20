@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 = elasticsearch-ruby
 
 == Overview
@@ -84,3 +85,16 @@ client.search index: 'my-index', body: { query: { match: { title: 'test' } } }
 This software is Copyright (c) 2013 by Elasticsearch BV.
 
 This is free software, licensed under The Apache License Version 2.0.
+=======
+= Ruby And Rails Integrations
+
+include::client.asciidoc[]
+
+include::model.asciidoc[]
+
+include::rails.asciidoc[]
+
+include::persistence.asciidoc[]
+
+include::copyright.asciidoc[]
+>>>>>>> v2.1.1

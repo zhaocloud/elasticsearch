@@ -17,7 +17,11 @@ The second command selectively retrieves nodes information of only
 
 By default, it just returns all attributes and core settings for a node.
 It also allows to get only information on `settings`, `os`, `process`, `jvm`,
+<<<<<<< HEAD
 `thread_pool`, `network`, `transport`, `http` and `plugins`:
+=======
+`thread_pool`, `transport`, `http` and `plugins`:
+>>>>>>> v2.1.1
 
 [source,js]
 --------------------------------------------------
@@ -32,6 +36,56 @@ curl -XGET 'http://localhost:9200/_nodes/nodeId1,nodeId2/_all
 
 The `_all` flag can be set to return all the information - or you can simply omit it.
 
+<<<<<<< HEAD
+=======
+[float]
+[[os-info]]
+==== Operating System information
+
+The `os` flag can be set to retrieve information that concern
+the operating system:
+
+`os.refresh_interval_in_millis`::
+	Refresh interval for the OS statistics
+
+`os.name`::
+	Name of the operating system (ex: Linux, Windows, Mac OS X)
+
+`os.arch`::
+	Name of the JVM architecture (ex: amd64, x86)
+
+`os.version`::
+	Version of the operating system
+
+`os.available_processors`::
+	Number of processors available to the Java virtual machine
+
+`os.allocated_processors`::
+    The number of processors actually used to calculate thread pool size. This number can be set
+    with the `processors` setting of a node and defaults to the number of processors reported by the OS.
+    In both cases this number will never be larger than 32.
+
+[float]
+[[process-info]]
+==== Process information
+
+The `process` flag can be set to retrieve information that concern
+the current running process:
+
+`process.refresh_interval_in_millis`::
+	Refresh interval for the process statistics
+
+`process.id`::
+	Process identifier (PID)
+
+`process.mlockall`::
+	Indicates if the process address space has been successfully locked in memory
+
+[float]
+[[plugins-info]]
+==== Plugins information
+
+>>>>>>> v2.1.1
 `plugins` - if set, the result will contain details about the loaded
 plugins per node:
 
@@ -75,6 +129,7 @@ The result will look similar to:
   }
 }
 --------------------------------------------------
+<<<<<<< HEAD
 
 if your `plugin` data is subject to change use
 `plugins.info_refresh_interval` to change or disable the caching
@@ -91,3 +146,5 @@ plugins.info_refresh_interval: -1
 # Disable cache
 plugins.info_refresh_interval: 0
 --------------------------------------------------
+=======
+>>>>>>> v2.1.1

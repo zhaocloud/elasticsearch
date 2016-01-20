@@ -46,5 +46,8 @@ include::cluster/nodes-stats.asciidoc[]
 include::cluster/nodes-info.asciidoc[]
 
 include::cluster/nodes-hot-threads.asciidoc[]
+<<<<<<< HEAD
 
 include::cluster/nodes-shutdown.asciidoc[]
+=======
+>>>>>>> v2.1.1

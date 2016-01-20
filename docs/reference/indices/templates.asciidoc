@@ -1,7 +1,11 @@
 [[indices-templates]]
 == Index Templates
 
+<<<<<<< HEAD
 Index templates allow to define templates that will automatically be
+=======
+Index templates allow you to define templates that will automatically be
+>>>>>>> v2.1.1
 applied to new indices created. The templates include both settings and
 mappings, and a simple pattern template that controls if the template
 will be applied to the index created. For example:
@@ -27,8 +31,11 @@ Defines a template named template_1, with a template pattern of `te*`.
 The settings and mappings will be applied to any index name that matches
 the `te*` template.
 
+<<<<<<< HEAD
 added[1.1.0]
 
+=======
+>>>>>>> v2.1.1
 It is also possible to include aliases in an index template as follows:
 
 [source,js]
@@ -70,7 +77,11 @@ curl -XDELETE localhost:9200/_template/template_1
 
 [float]
 [[getting]]
+<<<<<<< HEAD
 === GETting templates
+=======
+=== Getting templates
+>>>>>>> v2.1.1
 
 Index templates are identified by a name (in the above case
 `template_1`) and can be retrieved using the following:
@@ -97,6 +108,24 @@ curl -XGET localhost:9200/_template/
 
 
 [float]
+<<<<<<< HEAD
+=======
+[[indices-templates-exists]]
+=== Templates exists
+
+Used to check if the template exists or not. For example:
+
+[source,js]
+-----------------------------------------------
+curl -XHEAD -i localhost:9200/_template/template_1
+-----------------------------------------------
+
+The HTTP status code indicates if the template with the given name
+exists or not. A status code `200` means it exists, a `404` it does not.
+
+
+[float]
+>>>>>>> v2.1.1
 [[multiple-templates]]
 === Multiple Template Matching
 
@@ -144,6 +173,7 @@ for indices of that start with `te*`, source will still be enabled.
 Note, for mappings, the merging is "deep", meaning that specific
 object/property based mappings can easily be added/overridden on higher
 order templates, with lower order templates providing the basis.
+<<<<<<< HEAD
 
 [float]
 [[config]]
@@ -178,3 +208,5 @@ added if it matches an index. Here is a sample of the mentioned file:
     }
 }
 --------------------------------------------------
+=======
+>>>>>>> v2.1.1

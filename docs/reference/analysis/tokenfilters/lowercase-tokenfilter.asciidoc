@@ -4,7 +4,11 @@
 A token filter of type `lowercase` that normalizes token text to lower
 case.
 
+<<<<<<< HEAD
 Lowercase token filter supports Greek and Turkish lowercase token
+=======
+Lowercase token filter supports Greek, Irish, and Turkish lowercase token
+>>>>>>> v2.1.1
 filters through the `language` parameter. Below is a usage example in a
 custom analyzer
 

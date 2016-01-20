@@ -1,11 +1,28 @@
 [[elasticsearch-reference]]
+<<<<<<< HEAD
 = Reference
+=======
+= Elasticsearch Reference
+
+:version:   2.1.0
+:branch:    2.1
+:major-version: 2.x
+:jdk:       1.8.0_25
+:defguide:  https://www.elastic.co/guide/en/elasticsearch/guide/current
+:plugins:   https://www.elastic.co/guide/en/elasticsearch/plugins/2.1
+:issue:     https://github.com/elastic/elasticsearch/issues/
+:pull:      https://github.com/elastic/elasticsearch/pull/
+>>>>>>> v2.1.1
 
 include::getting-started.asciidoc[]
 
 include::setup.asciidoc[]
 
+<<<<<<< HEAD
 include::migration/migrate_1_0.asciidoc[]
+=======
+include::migration/index.asciidoc[]
+>>>>>>> v2.1.1
 
 include::api-conventions.asciidoc[]
 
@@ -13,6 +30,11 @@ include::docs.asciidoc[]
 
 include::search.asciidoc[]
 
+<<<<<<< HEAD
+=======
+include::aggregations.asciidoc[]
+
+>>>>>>> v2.1.1
 include::indices.asciidoc[]
 
 include::cat.asciidoc[]
@@ -33,5 +55,13 @@ include::testing.asciidoc[]
 
 include::glossary.asciidoc[]
 
+<<<<<<< HEAD
+=======
+include::release-notes.asciidoc[]
+
+include::redirects.asciidoc[]
+
+
+>>>>>>> v2.1.1
 
 

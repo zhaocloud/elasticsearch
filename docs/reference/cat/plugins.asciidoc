@@ -3,7 +3,11 @@
 
 The `plugins` command provides a view per node of running plugins. This information *spans nodes*.
 
+<<<<<<< HEAD
 [source,shell]
+=======
+[source,sh]
+>>>>>>> v2.1.1
 ------------------------------------------------------------------------------
 % curl 'localhost:9200/_cat/plugins?v'
 name    component       version        type isolation url

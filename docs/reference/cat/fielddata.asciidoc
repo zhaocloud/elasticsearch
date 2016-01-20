@@ -1,12 +1,19 @@
 [[cat-fielddata]]
 == cat fielddata
 
+<<<<<<< HEAD
 added[1.2.0]
 
 `fielddata` shows information about currently loaded fielddata on a per-node
 basis.
 
 [source,shell]
+=======
+`fielddata` shows how much heap memory is currently being used by fielddata 
+on every data node in the cluster.
+
+[source,sh]
+>>>>>>> v2.1.1
 --------------------------------------------------
 % curl '192.168.56.10:9200/_cat/fielddata?v'
 id                     host    ip            node          total   body    text
@@ -17,7 +24,11 @@ yaDkp-G3R0q1AJ-HUEvkSQ myhost3 10.20.100.202 Microchip     284.6kb 109.2kb 175.3
 
 Fields can be specified either as a query parameter, or in the URL path:
 
+<<<<<<< HEAD
 [source,shell]
+=======
+[source,sh]
+>>>>>>> v2.1.1
 --------------------------------------------------
 % curl '192.168.56.10:9200/_cat/fielddata?v&fields=body'
 id                     host    ip            node          total   body

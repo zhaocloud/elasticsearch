@@ -13,6 +13,10 @@ and warmers.
 
 * <<indices-create-index>>
 * <<indices-delete-index>>
+<<<<<<< HEAD
+=======
+* <<indices-get-index>>
+>>>>>>> v2.1.1
 * <<indices-exists>>
 * <<indices-open-close>>
 
@@ -23,7 +27,10 @@ and warmers.
 * <<indices-put-mapping>>
 * <<indices-get-mapping>>
 * <<indices-get-field-mapping>>
+<<<<<<< HEAD
 * <<indices-delete-mapping>>
+=======
+>>>>>>> v2.1.1
 * <<indices-types-exists>>
 
 [float]
@@ -41,11 +48,23 @@ and warmers.
 * <<indices-warmers>>
 
 [float]
+<<<<<<< HEAD
+=======
+[[shadow-replicas]]
+== Replica configurations
+* <<indices-shadow-replicas>>
+
+[float]
+>>>>>>> v2.1.1
 [[monitoring]]
 == Monitoring:
 * <<indices-stats>>
 * <<indices-segments>>
 * <<indices-recovery>>
+<<<<<<< HEAD
+=======
+* <<indices-shards-stores>>
+>>>>>>> v2.1.1
 
 [float]
 [[status-management]]
@@ -53,7 +72,12 @@ and warmers.
 * <<indices-clearcache>>
 * <<indices-refresh>>
 * <<indices-flush>>
+<<<<<<< HEAD
 * <<indices-optimize>>
+=======
+* <<indices-forcemerge>>
+* <<indices-upgrade>>
+>>>>>>> v2.1.1
 
 --
 
@@ -61,6 +85,11 @@ include::indices/create-index.asciidoc[]
 
 include::indices/delete-index.asciidoc[]
 
+<<<<<<< HEAD
+=======
+include::indices/get-index.asciidoc[]
+
+>>>>>>> v2.1.1
 include::indices/indices-exists.asciidoc[]
 
 include::indices/open-close.asciidoc[]
@@ -73,8 +102,11 @@ include::indices/get-field-mapping.asciidoc[]
 
 include::indices/types-exists.asciidoc[]
 
+<<<<<<< HEAD
 include::indices/delete-mapping.asciidoc[]
 
+=======
+>>>>>>> v2.1.1
 include::indices/aliases.asciidoc[]
 
 include::indices/update-settings.asciidoc[]
@@ -87,17 +119,36 @@ include::indices/templates.asciidoc[]
 
 include::indices/warmers.asciidoc[]
 
+<<<<<<< HEAD
+=======
+include::indices/shadow-replicas.asciidoc[]
+
+>>>>>>> v2.1.1
 include::indices/stats.asciidoc[]
 
 include::indices/segments.asciidoc[]
 
 include::indices/recovery.asciidoc[]
 
+<<<<<<< HEAD
+=======
+include::indices/shard-stores.asciidoc[]
+
+>>>>>>> v2.1.1
 include::indices/clearcache.asciidoc[]
 
 include::indices/flush.asciidoc[]
 
 include::indices/refresh.asciidoc[]
 
+<<<<<<< HEAD
 include::indices/optimize.asciidoc[]
 
+=======
+include::indices/forcemerge.asciidoc[]
+
+include::indices/optimize.asciidoc[]
+
+include::indices/upgrade.asciidoc[]
+
+>>>>>>> v2.1.1

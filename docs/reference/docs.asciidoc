@@ -15,8 +15,11 @@ This section describes the following CRUD APIs:
 .Multi-document APIs
 * <<docs-multi-get>>
 * <<docs-bulk>>
+<<<<<<< HEAD
 * <<docs-bulk-udp>>
 * <<docs-delete-by-query>>
+=======
+>>>>>>> v2.1.1
 
 NOTE: All CRUD APIs are single-index APIs. The `index` parameter accepts a single
 index name, or an `alias` which points to a single index.
@@ -35,10 +38,13 @@ include::docs/multi-get.asciidoc[]
 
 include::docs/bulk.asciidoc[]
 
+<<<<<<< HEAD
 include::docs/delete-by-query.asciidoc[]
 
 include::docs/bulk-udp.asciidoc[]
 
+=======
+>>>>>>> v2.1.1
 include::docs/termvectors.asciidoc[]
 
 include::docs/multi-termvectors.asciidoc[]

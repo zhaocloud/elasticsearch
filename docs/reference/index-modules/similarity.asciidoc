@@ -6,8 +6,13 @@ are scored. Similarity is per field, meaning that via the mapping one
 can define a different similarity per field.
 
 Configuring a custom similarity is considered a expert feature and the
+<<<<<<< HEAD
 builtin similarities are most likely sufficient as is described in the
 <<mapping-core-types,mapping section>>
+=======
+builtin similarities are most likely sufficient as is described in
+<<similarity>>.
+>>>>>>> v2.1.1
 
 [float]
 [[configuration]]
@@ -41,7 +46,11 @@ Here we configure the DFRSimilarity so it can be referenced as
     "properties" : {
       "title" : { "type" : "string", "similarity" : "my_similarity" }
     }
+<<<<<<< HEAD
 } 
+=======
+}
+>>>>>>> v2.1.1
 --------------------------------------------------
 
 [float]
@@ -52,9 +61,15 @@ Here we configure the DFRSimilarity so it can be referenced as
 ==== Default similarity
 
 The default similarity that is based on the TF/IDF model. This
+<<<<<<< HEAD
 similarity has the following option: 
 
 `discount_overlaps`:: 
+=======
+similarity has the following option:
+
+`discount_overlaps`::
+>>>>>>> v2.1.1
     Determines whether overlap tokens (Tokens with
     0 position increment) are ignored when computing norm. By default this
     is true, meaning overlap tokens do not count when computing norms.
@@ -71,6 +86,7 @@ http://en.wikipedia.org/wiki/Okapi_BM25[Okapi_BM25] for more details.
 This similarity has the following options:
 
 [horizontal]
+<<<<<<< HEAD
 `k1`:: 
     Controls non-linear term frequency normalization
     (saturation). 
@@ -79,6 +95,16 @@ This similarity has the following options:
     Controls to what degree document length normalizes tf values. 
 
 `discount_overlaps`:: 
+=======
+`k1`::
+    Controls non-linear term frequency normalization
+    (saturation).
+
+`b`::
+    Controls to what degree document length normalizes tf values.
+
+`discount_overlaps`::
+>>>>>>> v2.1.1
     Determines whether overlap tokens (Tokens with
     0 position increment) are ignored when computing norm. By default this
     is true, meaning overlap tokens do not count when computing norms.
@@ -90,6 +116,7 @@ Type name: `BM25`
 ==== DFR similarity
 
 Similarity that implements the
+<<<<<<< HEAD
 http://lucene.apache.org/core/4_1_0/core/org/apache/lucene/search/similarities/DFRSimilarity.html[divergence
 from randomness] framework. This similarity has the following options:
 
@@ -101,6 +128,19 @@ from randomness] framework. This similarity has the following options:
     Possible values: `no`, `b` and `l`. 
 
 `normalization`:: 
+=======
+http://lucene.apache.org/core/5_2_1/core/org/apache/lucene/search/similarities/DFRSimilarity.html[divergence
+from randomness] framework. This similarity has the following options:
+
+[horizontal]
+`basic_model`::
+    Possible values: `be`, `d`, `g`, `if`, `in`, `ine` and `p`.
+
+`after_effect`::
+    Possible values: `no`, `b` and `l`.
+
+`normalization`::
+>>>>>>> v2.1.1
     Possible values: `no`, `h1`, `h2`, `h3` and `z`.
 
 All options but the first option need a normalization value.
@@ -111,12 +151,24 @@ Type name: `DFR`
 [[ib]]
 ==== IB similarity.
 
+<<<<<<< HEAD
 http://lucene.apache.org/core/4_1_0/core/org/apache/lucene/search/similarities/IBSimilarity.html[Information
 based model] . This similarity has the following options:
 
 [horizontal]
 `distribution`::  Possible values: `ll` and `spl`. 
 `lambda`::        Possible values: `df` and `ttf`. 
+=======
+http://lucene.apache.org/core/5_2_1/core/org/apache/lucene/search/similarities/IBSimilarity.html[Information
+based model] . The algorithm is based on the concept that the information content in any symbolic 'distribution'
+sequence is primarily determined by the repetitive usage of its basic elements.
+For written texts this challenge would correspond to comparing the writing styles of diferent authors.
+This similarity has the following options:
+
+[horizontal]
+`distribution`::  Possible values: `ll` and `spl`.
+`lambda`::        Possible values: `df` and `ttf`.
+>>>>>>> v2.1.1
 `normalization`:: Same as in `DFR` similarity.
 
 Type name: `IB`
@@ -125,7 +177,11 @@ Type name: `IB`
 [[lm_dirichlet]]
 ==== LM Dirichlet similarity.
 
+<<<<<<< HEAD
 http://lucene.apache.org/core/4_7_1/core/org/apache/lucene/search/similarities/LMDirichletSimilarity.html[LM
+=======
+http://lucene.apache.org/core/5_2_1/core/org/apache/lucene/search/similarities/LMDirichletSimilarity.html[LM
+>>>>>>> v2.1.1
 Dirichlet similarity] . This similarity has the following options:
 
 [horizontal]
@@ -137,12 +193,21 @@ Type name: `LMDirichlet`
 [[lm_jelinek_mercer]]
 ==== LM Jelinek Mercer similarity.
 
+<<<<<<< HEAD
 http://lucene.apache.org/core/4_7_1/core/org/apache/lucene/search/similarities/LMJelinekMercerSimilarity.html[LM
 Jelinek Mercer similarity] . This similarity has the following options:
 
 [horizontal]
 `lambda`::  The optimal value depends on both the collection and the query. The optimal value is around `0.1`
 for title queries and `0.7` for long queries. Default to `0.1`.
+=======
+http://lucene.apache.org/core/5_2_1/core/org/apache/lucene/search/similarities/LMJelinekMercerSimilarity.html[LM
+Jelinek Mercer similarity] . The algorithm attempts to capture important patterns in the text, while leaving out noise. This similarity has the following options:
+
+[horizontal]
+`lambda`::  The optimal value depends on both the collection and the query. The optimal value is around `0.1`
+for title queries and `0.7` for long queries. Default to `0.1`. When value approaches `0`, documents that match more query terms will be ranked higher than those that match fewer terms.
+>>>>>>> v2.1.1
 
 Type name: `LMJelinekMercer`
 
@@ -157,7 +222,11 @@ implementation used for these two methods, while not changing the
 `default`, it is possible to configure a similarity with the name
 `base`. This similarity will then be used for the two methods.
 
+<<<<<<< HEAD
 You can change the default similarity for all fields like this:
+=======
+You can change the default similarity for all fields by putting the following setting into `elasticsearch.yml`:
+>>>>>>> v2.1.1
 
 [source,js]
 --------------------------------------------------

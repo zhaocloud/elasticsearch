@@ -1,6 +1,7 @@
 [[index-modules-store]]
 == Store
 
+<<<<<<< HEAD
 The store module allows you to control how index data is stored.
 
 The index can either be stored in-memory (no persistence) or on-disk
@@ -49,16 +50,26 @@ level settings, it can be set as well using the
 is `node`, meaning it will throttle based on the node level settings and
 participate in the global throttling happening. Both settings can be set
 using the index update settings API dynamically.
+=======
+The store module allows you to control how index data is stored and accessed on disk.
+>>>>>>> v2.1.1
 
 [float]
 [[file-system]]
 === File system storage types
 
+<<<<<<< HEAD
 File system based storage is the default storage used. There are
 different implementations or _storage types_. The best one for the
 operating environment will be automatically chosen: `mmapfs` on
 Solaris/Linux/Windows 64bit, `simplefs` on Windows 32bit, and
 `niofs` for the rest.
+=======
+There are different file system implementations or _storage types_. The best
+one for the operating environment will be automatically chosen: `mmapfs` on
+Windows 64bit, `simplefs` on Windows 32bit, and `default` (hybrid `niofs` and
+`mmapfs`) for the rest.
+>>>>>>> v2.1.1
 
 This can be overridden for all indices by adding this to the
 `config/elasticsearch.yml` file:
@@ -68,6 +79,7 @@ This can be overridden for all indices by adding this to the
 index.store.type: niofs
 ---------------------------------
 
+<<<<<<< HEAD
 It can also be set on a per-index basis at index creation time:
 
 [source,json]
@@ -87,20 +99,49 @@ The following sections lists all the different storage types supported.
 ==== Simple FS
 
 The `simplefs` type is a straightforward implementation of file system
+=======
+It is a _static_ setting that can be set on a per-index basis at index
+creation time:
+
+[source,js]
+---------------------------------
+PUT /my_index
+{
+  "settings": {
+    "index.store.type": "niofs"
+  }
+}
+---------------------------------
+
+experimental[This is an expert-only setting and may be removed in the future]
+
+The following sections lists all the different storage types supported.
+
+[[simplefs]]`simplefs`::
+
+The Simple FS type is a straightforward implementation of file system
+>>>>>>> v2.1.1
 storage (maps to Lucene `SimpleFsDirectory`) using a random access file.
 This implementation has poor concurrent performance (multiple threads
 will bottleneck). It is usually better to use the `niofs` when you need
 index persistence.
 
+<<<<<<< HEAD
 [float]
 [[niofs]]
 ==== NIO FS
 
 The `niofs` type stores the shard index on the file system (maps to
+=======
+[[niofs]]`niofs`::
+
+The NIO FS type stores the shard index on the file system (maps to
+>>>>>>> v2.1.1
 Lucene `NIOFSDirectory`) using NIO. It allows multiple threads to read
 from the same file concurrently. It is not recommended on Windows
 because of a bug in the SUN Java implementation.
 
+<<<<<<< HEAD
 [[mmapfs]]
 [float]
 ==== MMap FS
@@ -118,3 +159,23 @@ See <<vm-max-map-count>>
 
 The `memory` type stores the index in main memory, using Lucene's
 `RamIndexStore`.
+=======
+[[mmapfs]]`mmapfs`::
+
+The MMap FS type stores the shard index on the file system (maps to
+Lucene `MMapDirectory`) by mapping a file into memory (mmap). Memory
+mapping uses up a portion of the virtual memory address space in your
+process equal to the size of the file being mapped. Before using this
+class, be sure you have allowed plenty of
+<<vm-max-map-count,virtual address space>>.
+
+[[default_fs]]`default_fs`::
+
+The `default` type is a hybrid of NIO FS and MMapFS, which chooses the best
+file system for each type of file. Currently only the Lucene term dictionary
+and doc values files are memory mapped to reduce the impact on the operating
+system. All other files are opened using Lucene `NIOFSDirectory`. Address
+space settings (<<vm-max-map-count>>) might also apply if your term
+dictionaries are large.
+
+>>>>>>> v2.1.1
